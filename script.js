@@ -22,9 +22,15 @@ form.addEventListener("submit", function (event) {
   count++;
   console.log("Total check-ins: ", count);
 
+  // update attendee count
+  const attendeeCount = document.getElementById("attendeeCount");
+  attendeeCount.textContent = count;
+
   // update progress bar
   const percentage = Math.round((count / maxCount) * 100) + "%";
   console.log(`Progress: ${percentage}`);
+  const progress = document.getElementById("progressBar");
+  progress.style.width = percentage;
 
   // update team counter
   let teamCounter = document.getElementById(team + "Count");
@@ -34,10 +40,6 @@ form.addEventListener("submit", function (event) {
   const message = `Welcome, ${name} from ${teamName}`;
   const greeting = document.getElementById("greeting");
   greeting.textContent = message;
-
-  // update attendee count
-  const attendeeCount = document.getElementById("attendeeCount");
-  attendeeCount.textContent = parseInt(attendeeCount.textContent) + 1;
 
   form.reset();
 });
