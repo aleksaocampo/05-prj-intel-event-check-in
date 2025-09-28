@@ -37,9 +37,13 @@ form.addEventListener("submit", function (event) {
   teamCounter.textContent = parseInt(teamCounter.textContent) + 1;
 
   // show welcome message
-  const message = `Welcome, ${name} from ${teamName}`;
+  const message = `🙌 Welcome, ${name} from ${teamName}`;
   const greeting = document.getElementById("greeting");
   greeting.textContent = message;
+
+  if (count == 50) {
+    greeting.textContent = "Attendance Reached!";
+  }
 
   form.reset();
 });
