@@ -34,6 +34,10 @@ form.addEventListener("submit", function (event) {
   const message = `Welcome, ${name} from ${teamName}`;
   const greeting = document.getElementById("greeting");
   greeting.textContent = message;
-  
+
+  // update attendee count
+  const attendeeCount = document.getElementById("attendeeCount");
+  attendeeCount.textContent = parseInt(attendeeCount.textContent) + 1;
+
   form.reset();
 });
