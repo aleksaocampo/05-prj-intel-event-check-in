@@ -41,8 +41,37 @@ form.addEventListener("submit", function (event) {
   const greeting = document.getElementById("greeting");
   greeting.textContent = message;
 
-  if (count == 50) {
-    greeting.textContent = "Attendance Reached!";
+  // If 50 attendees reached, show celebratory message with top team
+  if (count === 50) {
+    // Get team counts
+    const waterCount = parseInt(
+      document.getElementById("waterCount").textContent
+    );
+    const zeroCount = parseInt(
+      document.getElementById("zeroCount").textContent
+    );
+    const powerCount = parseInt(
+      document.getElementById("powerCount").textContent
+    );
+
+    // Find the team with the most attendees
+    let topTeam = "";
+    let topTeamName = "";
+    let max = waterCount;
+    topTeam = "water";
+    topTeamName = "Team Water Wise";
+    if (zeroCount > max) {
+      max = zeroCount;
+      topTeam = "zero";
+      topTeamName = "Team Net Zero";
+    }
+    if (powerCount > max) {
+      max = powerCount;
+      topTeam = "power";
+      topTeamName = "Team Renewables";
+    }
+
+    greeting.textContent = `🎉 Attendance Reached! The top team is ${topTeamName} with ${max} attendees!`;
   }
 
   form.reset();
