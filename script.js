@@ -32,9 +32,16 @@ form.addEventListener("submit", function (event) {
   const progress = document.getElementById("progressBar");
   progress.style.width = percentage;
 
+
   // update team counter
   let teamCounter = document.getElementById(team + "Count");
   teamCounter.textContent = parseInt(teamCounter.textContent) + 1;
+
+  // add attendee to the team list
+  let teamList = document.getElementById(team + "List");
+  let attendeeItem = document.createElement("li");
+  attendeeItem.textContent = name;
+  teamList.appendChild(attendeeItem);
 
   // show welcome message
   const message = `🙌 Welcome, ${name} from ${teamName}`;
